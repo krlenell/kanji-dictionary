@@ -33,6 +33,7 @@ class App{
   }
 
   searchKanji(searchKey){
+    this.pageBody.setloading()
     $.ajax({
       async: true,
       crossDomain: true,
