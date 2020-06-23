@@ -17,6 +17,7 @@ class App{
   handleSearchSuccess(data){
     console.log(data)
     if(!data.length){
+      this.pageBody.clearPage()
       this.pageBody.displayError("Kanji Not Found")
       return
     }
