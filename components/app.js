@@ -5,7 +5,9 @@ class App{
     this.searchKanji = this.searchKanji.bind(this)
     this.handleGetSuccess = this.handleGetSuccess.bind(this)
     this.handleGetError = this.handleGetError.bind(this)
-    this.lastKanji = null
+    this.searchedKanji = null
+    this.handleSecondSearchSuccess = this.handleSecondSearchSuccess.bind(this)
+    this.handleSecondSearchError = this.handleSecondSearchError.bind(this)
   }
 
   start(){
@@ -15,6 +17,9 @@ class App{
   handleGetSuccess(data){
     console.log(data)
     this.pageBody.modifyMainKanji(data)
+    this.searchedKanji = data[0].kanji.character
+    console.log(this.searchedKanji)
+    this.handleSecondSearch(this.searchedKanji)
   }
 
   handleGetError(error){
@@ -35,5 +40,25 @@ class App{
       error: this.handleGetError
     })
   }
+
+  handleSecondSearchSuccess(data){
+    console.log(data)
+  }
+
+  handleSecondSearchError(error){
+    console.error(error)
+  }
+
+  handleSecondSearch(searchedKanji){
+    $.ajax({
+      method: "GET",
+      url: `https://kanjiapi.dev/v1/kanji/${searchedKanji}`,
+      success: this.handleSecondSearchSuccess,
+      error: this.handleSecondSearchError
+    })
+  }
+
+
+
 
 }
