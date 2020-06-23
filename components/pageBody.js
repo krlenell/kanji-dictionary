@@ -5,7 +5,9 @@ class PageBody{
     this.getContent = this.getContent.bind(this)
   }
 
-
+  clearPage(){
+    this.main.innerHTML = ""
+  }
 
   modifyPage(data){
     console.log("data in modify page", data)

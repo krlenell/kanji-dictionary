@@ -16,9 +16,12 @@ class App{
 
   handleSearchSuccess(data){
     console.log(data)
-    this.searchedKanji = data[0].kanji.character
-    console.log(this.searchedKanji)
-    this.handleSecondSearch(this.searchedKanji)
+    this.pageBody.clearPage()
+    for(let i = 0; i < data.length; i++){
+      this.searchedKanji = data[i].kanji.character
+      console.log("searchedKanji", this.searchedKanji)
+      this.handleSecondSearch(this.searchedKanji)
+    }
   }
 
   handleSearchError(error){
