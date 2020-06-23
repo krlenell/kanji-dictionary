@@ -2,22 +2,22 @@ class PageBody{
   constructor(main){
     this.main = main
     this.modifyPage = this.modifyPage.bind(this)
+    this.getContent = this.getContent.bind(this)
   }
 
 
 
   modifyPage(data){
-    const mainKanji = this.main.querySelector("#kanji")
-    mainKanji.textContent = data.kanji
-    const kanjiTitle = this.main.querySelector("#kanji-title")
-    kanjiTitle.textContent = data.meanings[0]
+    console.log("data in modify page", data)
+    this.main.insertAdjacentHTML('afterbegin', this.getContent(data))
   }
 
   getContent(data){
+    console.log("data in getContent", data)
     const content =
     `<div class="row align-items-center flex-column">
       <h1 class="display-3" id="kanji">${data.kanji}</h1>
-      <h3>${data.meaning[0]}</h3>
+      <h3>${data.meanings[0]}</h3>
     </div>
       <div class="row justify-content-around">
         <p>Grade: ${data.grade}</p>
