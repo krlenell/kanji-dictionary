@@ -14,7 +14,7 @@ class App{
 
   handleGetSuccess(data){
     console.log(data)
-    this.pageBody.modifyPage(data)
+    this.pageBody.modifyMainKanji(data)
   }
 
   handleGetError(error){
