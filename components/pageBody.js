@@ -3,6 +3,7 @@ class PageBody{
     this.main = main
     this.modifyPage = this.modifyPage.bind(this)
     this.getContent = this.getContent.bind(this)
+    this.displayError = this.displayError.bind(this)
   }
 
   clearPage(){
@@ -12,6 +13,11 @@ class PageBody{
   modifyPage(data){
     console.log("data in modify page", data)
     this.main.insertAdjacentHTML('afterbegin', this.getContent(data))
+  }
+
+  displayError(error){
+    this.main.insertAdjacentHTML('afterBegin',
+    `<h3 class="text-danger"> Error: ${error}</h3>`)
   }
 
   getContent(data){
