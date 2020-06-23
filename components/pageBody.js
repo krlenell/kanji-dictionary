@@ -1,11 +1,15 @@
 class PageBody{
   constructor(main){
     this.main = main
-    this.modifyPage = this.modifyMainKanji.bind(this)
+    this.modifyPage = this.modifyPage.bind(this)
   }
 
-  modifyMainKanji(data){
+
+
+  modifyPage(data){
     const mainKanji = this.main.querySelector("#kanji")
-    mainKanji.textContent = data[0].kanji.character
+    mainKanji.textContent = data.kanji
+    const kanjiTitle = this.main.querySelector("#kanji-title")
+    kanjiTitle.textContent = data.meanings[0]
   }
 }

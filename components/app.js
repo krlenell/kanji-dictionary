@@ -3,21 +3,25 @@ class App{
     this.searchForm = searchForm
     this.pageBody = pageBody
     this.searchKanji = this.searchKanji.bind(this)
-    this.handleGetSuccess = this.handleGetSuccess.bind(this)
-    this.handleGetError = this.handleGetError.bind(this)
-    this.lastKanji = null
+    this.handleSearchSuccess = this.handleSearchSuccess.bind(this)
+    this.handleSearchError = this.handleSearchError.bind(this)
+    this.searchedKanji = null
+    this.handleSecondSearchSuccess = this.handleSecondSearchSuccess.bind(this)
+    this.handleSecondSearchError = this.handleSecondSearchError.bind(this)
   }
 
   start(){
     this.searchForm.onSubmit(this.searchKanji)
   }
 
-  handleGetSuccess(data){
+  handleSearchSuccess(data){
     console.log(data)
-    this.pageBody.modifyMainKanji(data)
+    this.searchedKanji = data[0].kanji.character
+    console.log(this.searchedKanji)
+    this.handleSecondSearch(this.searchedKanji)
   }
 
-  handleGetError(error){
+  handleSearchError(error){
     console.error(error)
   }
 
@@ -31,9 +35,30 @@ class App{
         "x-rapidapi-host": "kanjialive-api.p.rapidapi.com",
         "x-rapidapi-key": "e5621e1b1cmshb91fb5e84b8bf97p17fb61jsn591afbc7b127"
       },
-      success: this.handleGetSuccess,
-      error: this.handleGetError
+      success: this.handleSearchSuccess,
+      error: this.handleSearchError
     })
   }
+
+  handleSecondSearchSuccess(data){
+    console.log(data)
+    this.pageBody.modifyPage(data)
+  }
+
+  handleSecondSearchError(error){
+    console.error(error)
+  }
+
+  handleSecondSearch(searchedKanji){
+    $.ajax({
+      method: "GET",
+      url: `https://kanjiapi.dev/v1/kanji/${searchedKanji}`,
+      success: this.handleSecondSearchSuccess,
+      error: this.handleSecondSearchError
+    })
+  }
+
+
+
 
 }
