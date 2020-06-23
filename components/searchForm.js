@@ -6,11 +6,16 @@ class SearchForm{
     this.searchKanji = null
   }
 
+  onSubmit(searchKanji){
+    this.searchKanji = searchKanji
+  }
+
   handleSubmit(event){
     event.preventDefault()
     const formData = new FormData(event.target)
-    const searchKey = formData.get("kanji-search")
+    const searchKey = formData.get("kanji-search").toLowerCase()
     console.log(searchKey)
+    this.searchKanji(searchKey)
     this.searchFormElement.reset()
   }
 }

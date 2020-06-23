@@ -7,9 +7,13 @@ class App{
     this.lastKanji = null
   }
 
+  start(){
+    this.searchForm.onSubmit(this.searchKanji)
+  }
+
   handleGetSuccess(data){
     console.log(data)
-    
+
   }
 
   handleGetError(error){
