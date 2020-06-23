@@ -14,21 +14,27 @@
     <div class="row justify-content-center">
       <form action="" method="get">
         <div class="input-group input-group-lg mb-3">
-          <input type="text" name="kanji" placeholder="Enter English word" class="form-control">
+          <input type="text" name="kanji-search" placeholder="Enter English word" class="form-control">
           <div class="input-group-append">
             <input class="btn btn-primary" type="submit" value="Search">
           </div>
         </div>
       </form>
     </div>
-    <div class="row align-items-center flex-column">
-      <h1 class="display-3" id="kanji">犬</h1>
-      <h3 id="basic-meaning">Dog</h3>
-    </div>
+    <main>
+      <div class="row align-items-center flex-column">
+        <h1 class="display-3" id="kanji">字</h1>
+        <h3 id="basic-meaning">Kanji</h3>
+      </div>
+    </main>
   </div>
 
 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./components/searchForm.js"></script>
+  <script src="./components/pageBody.js"></script>
+  <script src="./components/app.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
