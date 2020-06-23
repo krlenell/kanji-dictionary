@@ -1,6 +1,8 @@
 const searchFormElement = document.querySelector("form")
+const main = document.querySelector("main")
 
 const searchForm = new SearchForm(searchFormElement)
-const app = new App(searchForm)
+const pageBody = new PageBody(main)
+const app = new App(searchForm, pageBody)
 
 app.start()

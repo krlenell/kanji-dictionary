@@ -1,6 +1,7 @@
 class App{
-  constructor(searchForm){
+  constructor(searchForm, pageBody){
     this.searchForm = searchForm
+    this.pageBody = pageBody
     this.searchKanji = this.searchKanji.bind(this)
     this.handleGetSuccess = this.handleGetSuccess.bind(this)
     this.handleGetError = this.handleGetError.bind(this)
@@ -13,7 +14,7 @@ class App{
 
   handleGetSuccess(data){
     console.log(data)
-
+    this.pageBody.modifyPage(data)
   }
 
   handleGetError(error){

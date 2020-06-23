@@ -14,7 +14,6 @@ class SearchForm{
     event.preventDefault()
     const formData = new FormData(event.target)
     const searchKey = formData.get("kanji-search").toLowerCase()
-    console.log(searchKey)
     this.searchKanji(searchKey)
     this.searchFormElement.reset()
   }
