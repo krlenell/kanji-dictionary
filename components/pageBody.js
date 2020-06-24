@@ -47,6 +47,7 @@ class PageBody{
   }
 
   getContent(data){
+    const dataJSON = JSON.stringify(data)
     const content =
     `<div class="row align-items-center flex-column">
       <h1 class="display-3" id="kanji">${data.kanji}</h1>
@@ -56,7 +57,7 @@ class PageBody{
         <p>Grade: ${data.grade}</p>
         <p>Strokes: ${data.stroke_count}</p>
         <p>Unicode: ${data.unicode}</p>
-        <p class="text-success" data-kanjiData=${data}>Save Kanji </p>
+        <p class="text-success" data-kanjiData=${dataJSON}>Save Kanji </p>
       </div>
       <div class="row">
         <div class="col-5">
