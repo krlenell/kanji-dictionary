@@ -17,6 +17,7 @@ class PageBody{
     this.main.innerHTML = ""
   }
 
+
   showAttribution(){
     this.attribution.classList.remove("invisible")
   }
@@ -41,10 +42,11 @@ class PageBody{
   }
 
   displayError(error, lastSearch){
+    this.clearPage()
     this.main.insertAdjacentHTML('afterBegin',
-    `<h3 class="text-danger"> Error: Kanji Not Found.</h3>
+    `<h3 class="text-danger"> Error: ${error}.</h3>
     <h3>This app uses a limited public API.  Try searching
-    <a href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
+    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
   }
 
   getContent(data){
