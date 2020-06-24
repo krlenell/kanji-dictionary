@@ -31,6 +31,7 @@ class App{
 
   handleSearchError(error){
     console.error(error)
+    this.pageBody.displayError("Kanji Alive is not Responding", this.searchedKanji)
   }
 
   searchKanji(searchKey){
@@ -57,6 +58,7 @@ class App{
 
   handleSecondSearchError(error){
     console.error(error)
+    this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 
   handleSecondSearch(searchedKanji){
