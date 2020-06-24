@@ -1,14 +1,28 @@
 class PageBody{
-  constructor(main){
+  constructor(header, main){
     this.main = main
+    this.header = header
+    this.attribution = this.header.querySelector("p")
     this.modifyPage = this.modifyPage.bind(this)
     this.getContent = this.getContent.bind(this)
     this.displayError = this.displayError.bind(this)
+    this.showAttribution = this.showAttribution.bind(this)
+    this.hideAttribution = this.hideAttribution.bind(this)
+    this.header.addEventListener("mouseover", this.showAttribution)
+    this.header.addEventListener("mouseout", this.hideAttribution)
 
   }
 
   clearPage(){
     this.main.innerHTML = ""
+  }
+
+  showAttribution(){
+    this.attribution.classList.remove("invisible")
+  }
+
+  hideAttribution(){
+    this.attribution.classList.add("invisible")
   }
 
   setloading(){
