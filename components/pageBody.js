@@ -36,7 +36,6 @@ class PageBody{
   }
 
   modifyPage(data){
-    console.log("data in modify page", data)
     this.main.insertAdjacentHTML('afterbegin', this.getContent(data))
   }
 
@@ -44,11 +43,10 @@ class PageBody{
     this.main.insertAdjacentHTML('afterBegin',
     `<h3 class="text-danger"> Error: Kanji Not Found.</h3>
     <h3>This app uses a limited public API.  Try searching
-    <a href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
+    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
   }
 
   getContent(data){
-    console.log("data in getContent", data)
     const content =
     `<div class="row align-items-center flex-column">
       <h1 class="display-3" id="kanji">${data.kanji}</h1>
@@ -58,6 +56,7 @@ class PageBody{
         <p>Grade: ${data.grade}</p>
         <p>Strokes: ${data.stroke_count}</p>
         <p>Unicode: ${data.unicode}</p>
+        <p class="text-success" data-kanjiData=${data}>Save Kanji </p>
       </div>
       <div class="row">
         <div class="col-5">
