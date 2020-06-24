@@ -18,7 +18,7 @@ class App{
     console.log(data)
     if(!data.length){
       this.pageBody.clearPage()
-      this.pageBody.displayError("Kanji Not Found")
+      this.pageBody.displayError(0, this.searchedKanji)
       return
     }
     this.pageBody.clearPage()
@@ -35,6 +35,7 @@ class App{
 
   searchKanji(searchKey){
     this.pageBody.setloading()
+    this.searchedKanji = searchKey
     $.ajax({
       async: true,
       crossDomain: true,
