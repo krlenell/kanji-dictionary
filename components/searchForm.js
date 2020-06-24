@@ -18,8 +18,6 @@ class SearchForm{
     }
   }
 
-
-
   handleSubmit(event){
     event.preventDefault()
     const formData = new FormData(event.target)
