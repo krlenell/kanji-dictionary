@@ -52,7 +52,7 @@ class PageBody{
         </div>
         <div class="col-5">
           <h5><a target="_blank" href="https://en.wikipedia.org/wiki/Remembering_the_Kanji_and_Remembering_the_Hanzi">Heisig meaning: </a></h5>
-          <p>${data.heisig_en}</p>
+          <p><a target="_blank" href="https://kanji.koohii.com/study/kanji/${data.heisig_en}"> ${data.heisig_en}</a></p>
         </div>
       </div>
       <div class="row">
