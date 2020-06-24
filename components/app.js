@@ -18,7 +18,8 @@ class App{
     console.log(data)
     if(!data.length){
       this.pageBody.clearPage()
-      this.pageBody.displayError(0, this.searchedKanji)
+      this.pageBody.displayError("Kanji not found in API", this.searchedKanji)
+      this.searchForm.disableForm(false)
       return
     }
     this.pageBody.clearPage()
@@ -31,10 +32,12 @@ class App{
 
   handleSearchError(error){
     console.error(error)
+    this.searchForm.disableForm(false)
     this.pageBody.displayError("Kanji Alive is not Responding", this.searchedKanji)
   }
 
   searchKanji(searchKey){
+    this.searchForm.disableForm(true)
     this.pageBody.setloading()
     this.searchedKanji = searchKey
     $.ajax({
@@ -53,11 +56,13 @@ class App{
 
   handleSecondSearchSuccess(data){
     console.log(data)
+    this.searchForm.disableForm(false)
     this.pageBody.modifyPage(data)
   }
 
   handleSecondSearchError(error){
     console.error(error)
+    this.searchForm.disableForm(false)
     this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 

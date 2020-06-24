@@ -46,7 +46,7 @@ class PageBody{
     this.main.insertAdjacentHTML('afterBegin',
     `<h3 class="text-danger"> Error: ${error}.</h3>
     <h3>This app uses a limited public API.  Try searching
-    <a href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
+    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
   }
 
   getContent(data){
