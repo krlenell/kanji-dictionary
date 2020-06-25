@@ -49,18 +49,19 @@ class PageBody{
   getContent(data){
     const dataJSON = JSON.stringify(data)
     const content =
-    `<div class="row align-items-center flex-column">
-      <h1 class="display-3" id="kanji">${data.kanji}</h1>
-      <h3>${data.meanings[0]}</h3>
-    </div>
-      <div class="row justify-content-around">
-        <p>Grade: ${data.grade}</p>
-        <p>Strokes: ${data.stroke_count}</p>
-        <p>Unicode: ${data.unicode}</p>
-        <button class="btn btn-info btn-sm" data-kanjiData=${dataJSON}>Save Kanji
-        <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-        </svg> </button>
+      `<div class="row justify-content-center align-items-center">
+        <div class="d-flex flex-column align-items-center">
+          <h1 class="display-3" id="kanji">${data.kanji}</h1>
+          <div class="d-flex align-items-center">
+            <h3>${data.meanings[0]}</h3>
+            <button class="btn d-inline btn-info btn-sm ml-2" data-kanjiData=${dataJSON}>
+              <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-5">
