@@ -15,7 +15,6 @@ class App{
   }
 
   handleSearchSuccess(data){
-    console.log(data)
     if(!data.length){
       this.pageBody.clearPage()
       this.pageBody.displayError(0, this.searchedKanji)
@@ -24,7 +23,6 @@ class App{
     this.pageBody.clearPage()
     for(let i = 0; i < data.length; i++){
       this.searchedKanji = data[i].kanji.character
-      console.log("searchedKanji", this.searchedKanji)
       this.handleSecondSearch(this.searchedKanji)
     }
   }
@@ -51,7 +49,6 @@ class App{
   }
 
   handleSecondSearchSuccess(data){
-    console.log(data)
     this.pageBody.modifyPage(data)
   }
 
