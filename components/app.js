@@ -15,7 +15,7 @@ class App{
   }
 
   handleSearchSuccess(data){
-    console.log(data)
+    //If empty array returned from API
     if(!data.length){
       this.pageBody.clearPage()
       this.pageBody.displayError("Kanji not found in API", this.searchedKanji)
@@ -25,7 +25,6 @@ class App{
     this.pageBody.clearPage()
     for(let i = 0; i < data.length; i++){
       this.searchedKanji = data[i].kanji.character
-      console.log("searchedKanji", this.searchedKanji)
       this.handleSecondSearch(this.searchedKanji)
     }
   }
@@ -36,6 +35,7 @@ class App{
     this.pageBody.displayError("Kanji Alive is not Responding", this.searchedKanji)
   }
 
+  //completes primary english-to-kanji search
   searchKanji(searchKey){
     this.searchForm.disableForm(true)
     this.pageBody.setloading()
@@ -55,7 +55,6 @@ class App{
   }
 
   handleSecondSearchSuccess(data){
-    console.log(data)
     this.searchForm.disableForm(false)
     this.pageBody.modifyPage(data)
   }
@@ -66,6 +65,7 @@ class App{
     this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 
+  //handles second search for more information about kanji
   handleSecondSearch(searchedKanji){
     $.ajax({
       method: "GET",
