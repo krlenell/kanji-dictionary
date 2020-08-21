@@ -16,6 +16,7 @@ class App{
 
   handleSearchSuccess(data){
     //If empty array returned from API
+    console.log(data)
     if(!data.length){
       this.pageBody.clearPage()
       this.pageBody.displayError("Kanji not found in API", this.searchedKanji)
@@ -44,11 +45,7 @@ class App{
       async: true,
       crossDomain: true,
       method: "GET",
-      url: `https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/?kem=${searchKey}`,
-      headers: {
-        "x-rapidapi-host": "kanjialive-api.p.rapidapi.com",
-        "x-rapidapi-key": "e5621e1b1cmshb91fb5e84b8bf97p17fb61jsn591afbc7b127"
-      },
+      url: `http://localhost:3001/api/kanji/:${searchKey}`,
       success: this.handleSearchSuccess,
       error: this.handleSearchError
     })

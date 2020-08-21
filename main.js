@@ -8,3 +8,11 @@ const pageBody = new PageBody(header, main)
 const app = new App(searchForm, pageBody)
 
 app.start()
+
+fetch(`http://localhost:3001/api/kanji/house`)
+  .then(result => result.data)
+  .then(data => console.log(data))
+
+fetch(`http://localhost:3001/api/test`)
+  .then(result=> result.data)
+  .then(data => console.log(data))
