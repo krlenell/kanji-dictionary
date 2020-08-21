@@ -51,7 +51,8 @@ class PageBody{
   getContent(data){
     const dataJSON = JSON.stringify(data)
     const content =
-      `<div class="row justify-content-center align-items-center">
+      `<div class="container">
+      <div class="row justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center">
           <h1 class="display-3" id="kanji">${data.kanji}</h1>
           <div class="d-flex align-items-center">
@@ -65,25 +66,26 @@ class PageBody{
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-5">
+      <div class="row justify-content-center">
+        <div class="col-3">
           <h5>Other meanings:</h5>
           <p>${data.meanings.join(", ")}</p>
         </div>
-        <div class="col-5">
+        <div class="col-3">
           <h5><a target="_blank" href="https://en.wikipedia.org/wiki/Remembering_the_Kanji_and_Remembering_the_Hanzi">Heisig meaning: </a></h5>
           <p><a target="_blank" href="https://kanji.koohii.com/study/kanji/${data.heisig_en}"> ${data.heisig_en}</a></p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-5">
+      <div class="row justify-content-center">
+        <div class="col-3">
           <h5>Kun (Japanese) Reading:</h5>
           <p>${data.kun_readings.join(", ")}</p>
         </div>
-        <div class="col-5">
+        <div class="col-3">
           <h5>On (Chinese) Reading:</h5>
           <p>${data.on_readings.join(", ")}</p>
         </div>
+      </div>
       </div>`
       return content
   }

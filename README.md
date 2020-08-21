@@ -1,3 +1,4 @@
+
 kanji-dictionary
 ======
 A hackathon project utilizing the data from two public APIs to create a simple kanji search application.
@@ -47,11 +48,3 @@ git clone https://github.com/krlenell/api-hackathon
 cd api-hackathon
 ```
 3. Start the project in browser
-
-
-
-
-
-
-
-
