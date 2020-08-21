@@ -18,6 +18,10 @@ Technologies Used
 + [kanjiapi](https://kanjiapi.dev/#!/)
 + [Kanji Alive](https://app.kanjialive.com/api/docs) (requires key)
 
+Live Demo
+=======
+[kanji-dict.krlenell.com](https://kanji-dict.krlenell.com/)
+
 Features
 -------
 
