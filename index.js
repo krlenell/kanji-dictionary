@@ -1,8 +1,12 @@
 const express = require('express')
 const JishoApi = require('unofficial-jisho-api')
+const cors = require('cors')
 
 const app = express();
 const jisho = new JishoApi()
+
+
+app.use(cors())
 
 app.use(express.json())
 

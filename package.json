@@ -4,7 +4,8 @@
   "description": "kanji-dictionary ====== A hackathon project utilizing the data from two public APIs to create a simple kanji search application.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,11 @@
   },
   "homepage": "https://github.com/krlenell/kanji-dictionary#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "unofficial-jisho-api": "^2.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
