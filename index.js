@@ -33,10 +33,6 @@ app.get(`/api/kanji/:word`, (req, res) => {
     })
   })
 
-app.get(`/api/test`, (req, res) => {
-  res.status(200).json({tested: "the test works"})
-})
-
 app.listen(3001, () =>
   console.log('Listening 3001')
 )
