@@ -45,7 +45,7 @@ class App{
       async: true,
       crossDomain: true,
       method: "GET",
-      url: `http://localhost:3001/api/kanji/:${searchKey}`,
+      url: `http://localhost:3001/api/kanji/${searchKey}`,
       success: this.handleSearchSuccess,
       error: this.handleSearchError
     })
