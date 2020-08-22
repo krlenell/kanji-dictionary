@@ -15,7 +15,6 @@ class App{
   }
 
   handleSearchSuccess(data){
-    //If empty array returned from API
     this.pageBody.clearPage()
     for(let i = 0; i < data.length; i++){
       this.searchedKanji = data[i]
