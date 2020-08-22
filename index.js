@@ -22,14 +22,14 @@ app.get(`/api/kanji/:word`, (req, res) => {
       const singleCharObj = data.filter(data => data.slug.length === 1)
       const singleChar = singleCharObj.map(obj => obj.slug)
       if(singleChar.length === 0){
-        res.status(404).json({error: "no kanji found for this query"})
+        res.status(404).json({error: "No valid kanji for query."})
         return
       }
       res.json(singleChar)
     })
     .catch(err => {
       console.error(err)
-      res.status(404).json({error: "kanji not found in API"})
+      res.status(404).json({error: "Error Requesting unofficial-jisho-api"})
     })
   })
 

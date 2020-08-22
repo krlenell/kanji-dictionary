@@ -44,7 +44,8 @@ class PageBody{
     this.clearPage()
     this.main.insertAdjacentHTML('afterBegin',
     `<h3 class="text-danger"> Error: ${error}.</h3>
-    <h3>This app uses a limited public API.  Try searching
+    <h3>This app is powered by Jisho. <br/> You can double check if your query exists
+    here:
     <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
   }
 
