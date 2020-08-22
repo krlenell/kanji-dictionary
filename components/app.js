@@ -25,7 +25,7 @@ class App{
     }
     this.pageBody.clearPage()
     for(let i = 0; i < data.length; i++){
-      this.searchedKanji = data[i].kanji.character
+      this.searchedKanji = data[i]
       this.handleSecondSearch(this.searchedKanji)
     }
   }
