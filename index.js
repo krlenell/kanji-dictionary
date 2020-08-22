@@ -1,3 +1,4 @@
+require('dotenv/config');
 const express = require('express')
 const JishoApi = require('unofficial-jisho-api')
 const cors = require('cors')
@@ -33,6 +34,6 @@ app.get(`/api/kanji/:word`, (req, res) => {
     })
   })
 
-app.listen(3001, () =>
+app.listen(process.env.PORT, () =>
   console.log('Listening 3001')
 )
