@@ -44,12 +44,12 @@ class PageBody{
     this.clearPage()
     this.main.insertAdjacentHTML('afterBegin',
     `<h3 class="text-danger"> Error: ${error}.</h3>
-    <h3>This app uses a limited public API.  Try searching
+    <h3>This app is powered by Jisho. <br/> You can double check if your query exists
+    here:
     <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
   }
 
   getContent(data){
-    const dataJSON = JSON.stringify(data)
     const content =
       `<div class="container">
       <div class="row justify-content-center align-items-center">
@@ -57,12 +57,6 @@ class PageBody{
           <h1 class="display-3" id="kanji">${data.kanji}</h1>
           <div class="d-flex align-items-center">
             <h3>${data.meanings[0]}</h3>
-            <button class="btn d-inline btn-info btn-sm ml-2" data-kanjiData=${dataJSON}>
-              <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -91,15 +85,3 @@ class PageBody{
   }
 
 }
-
-// sample data
-// grade: 6
-// heisig_en: "timber-trees"
-// jlpt: 1
-// kanji: "樹"
-// kun_readings: ["き"]
-// meanings: (5)["timber", "trees", "wood", "establish", "set up"]
-// name_readings: (9)["いつき", "うえ", "こ", "しげ", "じ", "たちき", "たつ", "たつる", "な"]
-// on_readings: ["ジュ"]
-// stroke_count: 16
-// unicode: "6a39"

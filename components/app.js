@@ -16,26 +16,20 @@ class App{
 
   handleSearchSuccess(data){
     //If empty array returned from API
-    if(!data.length){
-      this.pageBody.clearPage()
-      this.pageBody.displayError("Kanji not found in API", this.searchedKanji)
-      this.searchForm.disableForm(false)
-      return
-    }
     this.pageBody.clearPage()
     for(let i = 0; i < data.length; i++){
-      this.searchedKanji = data[i].kanji.character
+      this.searchedKanji = data[i]
       this.handleSecondSearch(this.searchedKanji)
     }
   }
 
   handleSearchError(error){
     console.error(error)
+    console.log(error.responseJSON.error)
     this.searchForm.disableForm(false)
-    this.pageBody.displayError("Kanji Alive is not Responding", this.searchedKanji)
+    this.pageBody.displayError(error.responseJSON.error)
   }
 
-  //completes primary english-to-kanji search
   searchKanji(searchKey){
     this.searchForm.disableForm(true)
     this.pageBody.setloading()
@@ -44,11 +38,7 @@ class App{
       async: true,
       crossDomain: true,
       method: "GET",
-      url: `https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/?kem=${searchKey}`,
-      headers: {
-        "x-rapidapi-host": "kanjialive-api.p.rapidapi.com",
-        "x-rapidapi-key": "e5621e1b1cmshb91fb5e84b8bf97p17fb61jsn591afbc7b127"
-      },
+      url: `http://localhost:3001/api/kanji/${searchKey}`,
       success: this.handleSearchSuccess,
       error: this.handleSearchError
     })
@@ -65,7 +55,6 @@ class App{
     this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 
-  //handles second search for more information about kanji
   handleSecondSearch(searchedKanji){
     $.ajax({
       method: "GET",
@@ -74,8 +63,4 @@ class App{
       error: this.handleSecondSearchError
     })
   }
-
-
-
-
 }
