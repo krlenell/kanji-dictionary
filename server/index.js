@@ -3,10 +3,10 @@ const express = require('express')
 const JishoApi = require('unofficial-jisho-api')
 const cors = require('cors')
 const path = require('path')
-
 const app = express();
 const jisho = new JishoApi()
 
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(cors())
 
