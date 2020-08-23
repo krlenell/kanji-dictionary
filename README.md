@@ -11,13 +11,15 @@ Technologies Used
 + HTML5
 + CSS3
 + JavaScript
++ Express 4
++ Node.js 6
 + AWS EC2
 + Jquery and Ajax
 
 ### APIs Used
 
 + [kanjiapi](https://kanjiapi.dev/#!/)
-+ [Kanji Alive](https://app.kanjialive.com/api/docs) (requires key)
++ [unofficial-jisho-api](https://www.npmjs.com/package/unofficial-jisho-api)
 
 Live Demo
 =======
@@ -33,18 +35,27 @@ Development
 
 ### System Requirements
 
-Access to a browser and Internet access
++ Node.js 10 or higher
++ NPM 6 or higher
 
-A [RapidAPI](https://rapidapi.com/) Account for the Kanji Alive Key
 
 ### Getting Started
 
-1. Get a key to use Kanji Alive on [RapidAPI](https://rapidapi.com/KanjiAlive/api/learn-to-read-and-write-japanese-kanji?endpoint=55c74eb1e4b0fa5937a107c8)
 
-2. Clone this repository
+1. Clone this repository
 
 ```shell
-git clone https://github.com/krlenell/api-hackathon
-cd api-hackathon
+git clone https://github.com/krlenell/kanji-dictionary.git
+cd kanji-dictionary
 ```
-3. Start the project in browser
+2. Install dependencies with NPM
+
+```shell
+npm install
+```
+
+3. Start the project.  It can be view at [http://localhost:3001/](http://localhost:3001/) in the browser
+
+```shell
+npm run dev
+```
