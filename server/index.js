@@ -36,5 +36,5 @@ app.get(`/api/kanji/:word`, (req, res) => {
   })
 
 app.listen(process.env.PORT, () =>
-  console.log('Listening 3001')
+  console.log(`Listening Port ${process.env.PORT}`)
 )
