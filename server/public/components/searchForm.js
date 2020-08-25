@@ -3,6 +3,7 @@ class SearchForm{
     this.searchFormElement = searchFormElement
     this.searchFormInput = this.searchFormElement.querySelector("#form-input")
     this.searchFormButton = this.searchFormElement.querySelector("#form-button")
+    this.disableForm = this.disableForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.searchFormElement.addEventListener('submit', this.handleSubmit)
     this.searchKanji = null
@@ -23,6 +24,15 @@ class SearchForm{
       this.searchFormButton.classList.remove("disabled")
     } else {
       this.searchFormButton.setAttribute("disabled", "disabled")
+      this.searchFormButton.classList.add("disabled")
+    }
+  }
+
+  disableButton(){
+    if(!this.searchFormButton.hasAttribute("disabled")){
+      this.searchFormButton.setAttribute("disabled", "disabled")
+    }
+    if(!this.searchFormButton.classList.contains("disabled")){
       this.searchFormButton.classList.add("disabled")
     }
   }
