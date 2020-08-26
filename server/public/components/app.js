@@ -23,10 +23,9 @@ class App{
   }
 
   handleSearchError(error){
-    console.error(error)
-    console.log(error.responseJSON.error)
     this.searchForm.disableForm(false)
     this.pageBody.displayError(error.responseJSON.error, this.searchedKanji)
+    console.error(error)
   }
 
   searchKanji(searchKey){

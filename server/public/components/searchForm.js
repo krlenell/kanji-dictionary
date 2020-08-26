@@ -1,10 +1,10 @@
 class SearchForm{
   constructor(searchFormElement){
     this.searchFormElement = searchFormElement
+    this.disableForm = this.disableForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.searchFormElement.addEventListener('submit', this.handleSubmit)
     this.searchKanji = null
-    this.disableForm = this.disableForm.bind(this)
   }
 
   onSubmit(searchKanji){

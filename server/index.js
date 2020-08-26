@@ -12,8 +12,12 @@ app.use(cors())
 
 app.use(express.json())
 
-app.get(`/api/kanji/:word`, (req, res) => {
+app.get(`/api/kanji/:word?`, (req, res) => {
   const word = req.params.word
+  if(word === undefined){
+    res.status(404).json({error: "invalid input"})
+    return
+  }
   jisho.searchForPhrase(word)
     .then(result => result.data)
     .then(data => {
@@ -24,14 +28,14 @@ app.get(`/api/kanji/:word`, (req, res) => {
       const singleCharObj = data.filter(data => data.slug.length === 1)
       const singleChar = singleCharObj.map(obj => obj.slug)
       if(singleChar.length === 0){
-        res.status(404).json({error: "No valid kanji for query."})
+        res.status(404).json({error: "No valid kanji for query"})
         return
       }
       res.json(singleChar)
     })
     .catch(err => {
-      console.error(err)
       res.status(404).json({error: "Error Requesting unofficial-jisho-api"})
+      console.error(err)
     })
   })
 
