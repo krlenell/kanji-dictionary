@@ -12,7 +12,6 @@ class App{
 
   start(){
     this.searchForm.onSubmit(this.searchKanji)
-    this.searchForm.disableButton()
   }
 
   handleSearchSuccess(data){
