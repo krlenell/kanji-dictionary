@@ -17,8 +17,6 @@ class SearchForm{
   }
 
   handleChange(e){
-    console.log("change was done", e.target.value.length)
-    console.log("searchFormButton", this.searchFormButton)
     if(e.target.value.length){
       this.searchFormButton.removeAttribute("disabled")
       this.searchFormButton.classList.remove("disabled")
@@ -39,7 +37,6 @@ class SearchForm{
 
   disableForm(isDisabled){
     const inputs = this.searchFormElement.querySelectorAll("input")
-    console.log(inputs)
     for(let i = 0; i < inputs.length; i++){
       inputs[i].disabled = isDisabled
     }
@@ -51,5 +48,6 @@ class SearchForm{
     const searchKey = formData.get("kanji-search").toLowerCase()
     this.searchKanji(searchKey)
     this.searchFormElement.reset()
+    this.disableButton()
   }
 }
