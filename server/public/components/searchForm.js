@@ -43,6 +43,9 @@ class SearchForm{
     for(let i = 0; i < inputs.length; i++){
       inputs[i].disabled = isDisabled
     }
+    if(!isDisabled){
+      this.disableButton()
+    }
   }
 
   handleSubmit(event){
