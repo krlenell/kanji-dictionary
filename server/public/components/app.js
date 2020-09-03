@@ -17,10 +17,8 @@ class App{
 
   handleSearchSuccess(data){
     this.pageBody.clearPage()
-    for(let i = 0; i < data.length; i++){
-      this.searchedKanji = data[i]
-      this.handleSecondSearch(this.searchedKanji)
-    }
+    this.handleSecondSearch(data)
+
   }
 
   handleSearchError(error){
@@ -43,23 +41,37 @@ class App{
     })
   }
 
+  sortSecondSearches(data){
+    if(data.error){
+      this.handleSecondSearchError(data.error)
+    } else {
+      this.handleSecondSearchSuccess(data)
+    }
+  }
+
   handleSecondSearchSuccess(data){
     this.searchForm.disableForm(false)
     this.pageBody.modifyPage(data)
   }
 
-  handleSecondSearchError(error){
-    console.error(error)
+  handleSecondSearchError(data){
     this.searchForm.disableForm(false)
-    this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
+    this.pageBody.displaySecondSearchError(data)
   }
 
-  handleSecondSearch(searchedKanji){
-    $.ajax({
-      method: "GET",
-      url: `https://kanjiapi.dev/v1/kanji/${searchedKanji}`,
-      success: this.handleSecondSearchSuccess,
-      error: this.handleSecondSearchError
+  handleSecondSearchFail(error){
+    this.searchForm.disableForm(false)
+    console.error(error)
+    this.pageBody.displayError(`All Kanji Alive searches failed due to: <br> ${error}`,
+    this.searchedKanji)
+  }
+
+  handleSecondSearch(data){
+    const promises = data.map(kanji => {
+      return fetch(`/api/kanjiAlive/${kanji}`).then(res => res.json())
     })
+    Promise.all(promises)
+      .then(data => data.map((item) => this.sortSecondSearches(item)))
+      .catch(error => this.handleSecondSearchFail(error))
   }
 }
