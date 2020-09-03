@@ -53,13 +53,26 @@ class App{
   }
 
   handleSecondSearch(data){
-    for (let i = 0; i < data.length; i++) {
-      this.searchedKanji = data[i]
-    $.ajax({
-      method: "GET",
-      url: `https://kanjiapi.dev/v1/kanji/${this.searchedKanji}`,
-      success: this.handleSecondSearchSuccess,
-      error: this.handleSecondSearchError
-    })}
+    const promises = data.map(kanji => {
+      console.log('kanji', kanji)
+      return fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`
+      , {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )})
+    console.log("promises", promises)
+    Promise.all(promises)
+      .then(values => values.map((response)=> (response.json())))
+      .then(console.log(data))
   }
 }
+
+
+// $.ajax({
+//   method: "GET",
+//   url: `https://kanjiapi.dev/v1/kanji/${this.searchedKanji}`,
+//   success: this.handleSecondSearchSuccess,
+//   error: this.handleSecondSearchError
+// })

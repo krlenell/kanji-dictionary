@@ -17,8 +17,6 @@ class SearchForm{
   }
 
   handleChange(e) {
-    console.log("change was done", e.target.value.length)
-    console.log("searchFormButton", this.searchFormButton)
     if (e.target.value.length) {
       this.searchFormButton.removeAttribute("disabled")
       this.searchFormButton.classList.remove("disabled")
