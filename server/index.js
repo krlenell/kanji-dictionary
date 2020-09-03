@@ -32,9 +32,8 @@ app.get(`/api/kanjiAlive/:kanji`, (req, res) => {
       return response.json()
     })
     .then(data => res.status(200).json(data))
-    .catch(err => {
+    .catch(() => {
       res.status(404).json({ error: "Error Requesting kanjiAlive" })
-      console.error(err)
     })
 })
 

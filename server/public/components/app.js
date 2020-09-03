@@ -47,34 +47,31 @@ class App{
     } else {
       this.handleSecondSearchSuccess(data)
     }
-
   }
 
   handleSecondSearchSuccess(data){
-    console.log("second search data", data)
     this.searchForm.disableForm(false)
     this.pageBody.modifyPage(data)
   }
 
   handleSecondSearchError(data){
     this.searchForm.disableForm(false)
-    this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
+    this.pageBody.displaySecondSearchError(data)
+  }
+
+  handleSecondSearchFail(error){
+    this.searchForm.disableForm(false)
+    console.error(error)
+    this.pageBody.displayError(`All Kanji Alive searches failed due to: <br> ${error}`,
+    this.searchedKanji)
   }
 
   handleSecondSearch(data){
     const promises = data.map(kanji => {
       return fetch(`/api/kanjiAlive/${kanji}`).then(res => res.json())
     })
-    console.log("promises", promises)
     Promise.all(promises)
       .then(data => data.map((item) => this.sortSecondSearches(item)))
+      .catch(error => this.handleSecondSearchFail(error))
   }
 }
-
-
-// $.ajax({
-//   method: "GET",
-//   url: `https://kanjiapi.dev/v1/kanji/${this.searchedKanji}`,
-//   success: this.handleSecondSearchSuccess,
-//   error: this.handleSecondSearchError
-// })
