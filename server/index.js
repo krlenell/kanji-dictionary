@@ -10,6 +10,18 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(cors())
 
+app.get(`/api/kanjiAlive/:kanji`, (req, res) => {
+  const kanji = req.params.kanji
+  console.log("kanji", kanji)
+  if (kanji === undefined) {
+    res.status(404).json({ error: "invalid input" })
+    return
+  }
+  fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`)
+    .then((response) => console.log(response))
+    .then(data => console.log(data))
+})
+
 app.use(express.json())
 
 app.get(`/api/kanji/:word?`, (req, res) => {
@@ -38,6 +50,9 @@ app.get(`/api/kanji/:word?`, (req, res) => {
       console.error(err)
     })
   })
+
+
+
 
 app.listen(process.env.PORT, () =>
   console.log(`Listening Port ${process.env.PORT}`)
