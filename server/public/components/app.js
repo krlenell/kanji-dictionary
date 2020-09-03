@@ -54,11 +54,12 @@ class App{
 
   handleSecondSearch(data){
     const promises = data.map(kanji => {
-      return fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`).then(res => res.json())})
+      return fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`).then(res => res.json())
+    })
     console.log("promises", promises)
-    Promise.all(promises)
-    .then(data => data.map((item) => this.handleSecondSearchSuccess(item)))
-    .catch((error) => this.handleSecondSearchError(error))
+    Promise.allSettled(promises)
+      .then(data => data.map((item) => this.handleSecondSearchSuccess(item)))
+      .catch((error) => this.handleSecondSearchError(error))
   }
 }
 

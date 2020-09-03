@@ -43,10 +43,20 @@ class PageBody{
   displayError(error, lastSearch){
     this.clearPage()
     this.main.insertAdjacentHTML('afterBegin',
-    `<h3 class="text-danger"> Error: ${error}.</h3>
+
+    `
+    <div class= "container">
+    <div class="row justify-content-center align-items-center">
+    <div>
+    <h3 class="text-danger"> Error: ${error}.</h3>
     <h3>This app is powered by Jisho. <br/> You can double check if your query exists
     here:
-    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>`)
+    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h3>
+    </div>
+    </div>
+    </div>
+    `
+    )
   }
 
   getContent(data){
