@@ -41,26 +41,33 @@ class App{
     })
   }
 
+  sortSecondSearches(data){
+    if(data.error){
+      this.handleSecondSearchError(data.error)
+    } else {
+      this.handleSecondSearchSuccess(data)
+    }
+
+  }
+
   handleSecondSearchSuccess(data){
     console.log("second search data", data)
     this.searchForm.disableForm(false)
-    this.pageBody.modifyPage(data.value)
+    this.pageBody.modifyPage(data)
   }
 
-  handleSecondSearchError(error){
-    console.error(error)
+  handleSecondSearchError(data){
     this.searchForm.disableForm(false)
     this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 
   handleSecondSearch(data){
     const promises = data.map(kanji => {
-      return fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`).then(res => res.json())
+      return fetch(`/api/kanjiAlive/${kanji}`).then(res => res.json())
     })
     console.log("promises", promises)
-    Promise.allSettled(promises)
-      .then(data => data.map((item) => this.handleSecondSearchSuccess(item)))
-      .catch((error) => this.handleSecondSearchError(error))
+    Promise.all(promises)
+      .then(data => data.map((item) => this.sortSecondSearches(item)))
   }
 }
 
