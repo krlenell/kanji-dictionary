@@ -17,10 +17,8 @@ class App{
 
   handleSearchSuccess(data){
     this.pageBody.clearPage()
-    for(let i = 0; i < data.length; i++){
-      this.searchedKanji = data[i]
-      this.handleSecondSearch(this.searchedKanji)
-    }
+    this.handleSecondSearch(data)
+
   }
 
   handleSearchError(error){
@@ -54,12 +52,14 @@ class App{
     this.pageBody.displayError("KanjiAPI is not Responding", this.searchedKanji)
   }
 
-  handleSecondSearch(searchedKanji){
+  handleSecondSearch(data){
+    for (let i = 0; i < data.length; i++) {
+      this.searchedKanji = data[i]
     $.ajax({
       method: "GET",
-      url: `https://kanjiapi.dev/v1/kanji/${searchedKanji}`,
+      url: `https://kanjiapi.dev/v1/kanji/${this.searchedKanji}`,
       success: this.handleSecondSearchSuccess,
       error: this.handleSecondSearchError
-    })
+    })}
   }
 }
