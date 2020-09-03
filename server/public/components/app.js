@@ -42,8 +42,9 @@ class App{
   }
 
   handleSecondSearchSuccess(data){
+    console.log("second search data", data)
     this.searchForm.disableForm(false)
-    this.pageBody.modifyPage(data)
+    this.pageBody.modifyPage(data.value)
   }
 
   handleSecondSearchError(error){
