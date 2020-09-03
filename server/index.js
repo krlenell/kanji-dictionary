@@ -1,6 +1,7 @@
 require('dotenv/config');
 const express = require('express')
 const JishoApi = require('unofficial-jisho-api')
+const fetch = require('node-fetch')
 const cors = require('cors')
 const path = require('path')
 const app = express();
@@ -10,19 +11,32 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(cors())
 
+app.use(express.json())
+
 app.get(`/api/kanjiAlive/:kanji`, (req, res) => {
   const kanji = req.params.kanji
-  console.log("kanji", kanji)
   if (kanji === undefined) {
     res.status(404).json({ error: "invalid input" })
     return
   }
-  fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`)
-    .then((response) => console.log(response))
-    .then(data => console.log(data))
+  const url = `https://kanjiapi.dev/v1/kanji/${kanji}`
+  const encodedURL = encodeURI(url)
+  fetch(encodedURL, {
+    path: encodeURIComponent
+  })
+    .then((response) => {
+      if(response.status === 404){
+        res.status(404).json({ error: kanji})
+        return
+      }
+      return response.json()
+    })
+    .then(data => res.status(200).json(data))
+    .catch(err => {
+      res.status(404).json({ error: "Error Requesting kanjiAlive" })
+      console.error(err)
+    })
 })
-
-app.use(express.json())
 
 app.get(`/api/kanji/:word?`, (req, res) => {
   const word = req.params.word
