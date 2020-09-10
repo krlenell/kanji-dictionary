@@ -3,6 +3,9 @@ kanji-dictionary
 ======
 A hackathon project utilizing the data from two public APIs to create a simple kanji search application.
 
+Live Demo
+=======
+[kanji-dict.krlenell.com](https://kanji-dict.krlenell.com/)
 
 Technologies Used
 -------
@@ -20,10 +23,6 @@ Technologies Used
 
 + [kanjiapi](https://kanjiapi.dev/#!/)
 + [unofficial-jisho-api](https://www.npmjs.com/package/unofficial-jisho-api)
-
-Live Demo
-=======
-[kanji-dict.krlenell.com](https://kanji-dict.krlenell.com/)
 
 Features
 -------
