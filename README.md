@@ -1,7 +1,7 @@
 
 kanji-dictionary
 ======
-A hackathon project utilizing the data from two public APIs to create a simple kanji search application.
+A dictionary application for students of Japanese to search for Kanji using English words.
 
 Live Demo
 =======
