@@ -45,7 +45,7 @@ class PageBody{
     `
     <div class= "container">
       <div class="row justify-content-center align-items-center">
-        <div class="border border-secondary mb-2">
+        <div class="border border-secondary mb-2 p-3">
           <p class="text-danger"> The Kanji "${lastSearch}" could not be found by KanjiAlive.</p>
           <p>This app is powered by Jisho. <br/> You can double check if your query exists
           here:
@@ -62,7 +62,7 @@ class PageBody{
     `
     <div class= "container">
       <div class="row justify-content-center align-items-center">
-        <div class="border border-secondary">
+        <div class="border border-secondary p-3">
           <h4 class="text-danger"> Error: ${error}.</h4>
           <h4>This app is powered by Jisho. <br/> You can double check if your query exists
           here:
