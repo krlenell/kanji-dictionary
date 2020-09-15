@@ -44,14 +44,14 @@ class PageBody{
     this.main.insertAdjacentHTML('afterend',
     `
     <div class= "container">
-    <div class="row justify-content-center align-items-center">
-    <div class="border border-secondary mb-2">
-    <p class="text-danger"> The Kanji "${lastSearch}" could not be found by KanjiAlive.</p>
-    <p>This app is powered by Jisho. <br/> You can double check if your query exists
-    here:
-    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</p>
-    </div>
-    </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="border border-secondary mb-2">
+          <p class="text-danger"> The Kanji "${lastSearch}" could not be found by KanjiAlive.</p>
+          <p>This app is powered by Jisho. <br/> You can double check if your query exists
+          here:
+            <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</p>
+        </div>
+      </div>
     </div>
     `)
   }
@@ -61,14 +61,14 @@ class PageBody{
     this.main.insertAdjacentHTML('afterbegin',
     `
     <div class= "container">
-    <div class="row justify-content-center align-items-center">
-    <div class="border border-secondary">
-    <h4 class="text-danger"> Error: ${error}.</h4>
-    <h4>This app is powered by Jisho. <br/> You can double check if your query exists
-    here:
-    <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h4>
-    </div>
-    </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="border border-secondary">
+          <h4 class="text-danger"> Error: ${error}.</h4>
+          <h4>This app is powered by Jisho. <br/> You can double check if your query exists
+          here:
+            <a target="_blank" href=https://jisho.org/search/${lastSearch}>Jisho</h4>
+        </div>
+      </div>
     </div>
     `
     )
