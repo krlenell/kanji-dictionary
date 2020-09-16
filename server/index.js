@@ -13,6 +13,7 @@ app.use(cors())
 
 app.use(express.json())
 
+
 app.get(`/api/kanjiAlive/:kanji`, (req, res) => {
   const kanji = req.params.kanji
   if (kanji === undefined) {
