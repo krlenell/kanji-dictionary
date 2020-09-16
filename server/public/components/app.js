@@ -23,6 +23,11 @@ class App{
 
   handleSearchError(error){
     this.searchForm.disableForm(false)
+    console.log("error", error)
+    if (error.statusText === 'error' || error.statusText === 'timeout'){
+      console.log("error error")
+      this.pageBody.displayConnectionErrors(error.statusText)
+    }
     this.pageBody.displayError(error.responseJSON.error, this.searchedKanji)
     console.error(error)
   }
