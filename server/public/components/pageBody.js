@@ -6,6 +6,7 @@ class PageBody{
     this.modifyPage = this.modifyPage.bind(this)
     this.getContent = this.getContent.bind(this)
     this.displayError = this.displayError.bind(this)
+    this.displayConnectionErrors = this.displayConnectionErrors.bind(this)
     this.showAttribution = this.showAttribution.bind(this)
     this.hideAttribution = this.hideAttribution.bind(this)
     this.header.addEventListener("mouseover", this.showAttribution)
@@ -54,6 +55,38 @@ class PageBody{
       </div>
     </div>
     `)
+  }
+
+
+  displayConnectionErrors(error) {
+    this.clearPage()
+    if(error === 'error'){
+      this.main.insertAdjacentHTML('afterend',
+        `
+        <div class= "container">
+          <div class="row justify-content-center align-items-center">
+            <div class="border border-secondary mb-2 p-3">
+              <p class="text-danger"> Kanji Dictionary could not communicate with the server</p>
+              <p>Please check your connection and try again.</p>
+            </div>
+          </div>
+        </div>
+        `)
+    }
+    if(error === 'timeout'){
+      this.main.insertAdjacentHTML('afterend',
+      `
+      <div class= "container">
+        <div class="row justify-content-center align-items-center">
+          <div class="border border-secondary mb-2 p-3">
+            <p class="text-danger"> Kanji Dictionary could not connect with Jisho</p>
+            <p>Please check your connection and try again.</p>
+          </div>
+        </div>
+      </div>
+      `)
+    }
+
   }
 
   displayError(error, lastSearch){
