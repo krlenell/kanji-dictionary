@@ -33,6 +33,7 @@ class App{
     this.searchedKanji = searchKey
     $.ajax({
       async: true,
+      timeout: 5000,
       crossDomain: true,
       method: "GET",
       url: `/api/kanji/${searchKey}`,

@@ -5,6 +5,7 @@ const fetch = require('node-fetch')
 const cors = require('cors')
 const path = require('path')
 const app = express();
+const promiseRetry = require('promise-retry')
 const jisho = new JishoApi()
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -44,7 +45,15 @@ app.get(`/api/kanji/:word?`, (req, res) => {
     res.status(404).json({error: "invalid input"})
     return
   }
-  jisho.searchForPhrase(word)
+  promiseRetry((retry) => {
+    return jisho.searchForPhrase(word)
+      .catch(err => retry(err));
+  }, {
+    retries: 5,
+    factor: 2,
+    minTimeout: 1000,
+    maxTimeout: 3000
+  })
     .then(result => result.data)
     .then(data => {
       if(data.length === 0){
