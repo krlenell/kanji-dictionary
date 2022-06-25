@@ -23,7 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "promise-retry": "^2.0.1",
     "unofficial-jisho-api": "^2.0.11"
   },
